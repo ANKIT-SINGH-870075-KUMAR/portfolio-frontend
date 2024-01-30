@@ -7,7 +7,7 @@ export const getUser = () => async (dispatch) => {
             type: "GET_USER_REQUEST",
         });
 
-        const { data } = await axios.get('/api/v1/user');
+        const { data } = await axios.get(`${process.env.base_url}/api/v1/user`);
         dispatch({
             type: "GET_USER_SUCCESS",
             payload: data.user,
