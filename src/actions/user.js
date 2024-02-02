@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const base_url = "https://portfolio-backend-dz7p.onrender.com"
 //user action function
 export const getUser = () => async (dispatch) => {
     try {
@@ -7,7 +7,7 @@ export const getUser = () => async (dispatch) => {
             type: "GET_USER_REQUEST",
         });
 
-        const { data } = await axios.get(`https://portfolio-backend-dz7p.onrender.com/api/v1/user`);
+        const { data } = await axios.get(`${base_url}/api/v1/user`);
         dispatch({
             type: "GET_USER_SUCCESS",
             payload: data.user,
@@ -27,7 +27,7 @@ export const login = (email, password) => async (dispatch) => {
             type: "LOGIN_REQUEST",
         });
 
-        const { data } = await axios.post('https://portfolio-backend-dz7p.onrender.com/api/v1/login', {
+        const { data } = await axios.post(`${base_url}/api/v1/login`, {
             email,
             password,
         }, {
@@ -54,7 +54,7 @@ export const logout = () => async (dispatch) => {
             type: "LOGOUT_REQUEST",
         });
 
-        const { data } = await axios.get('https://portfolio-backend-dz7p.onrender.com/api/v1/logout');
+        const { data } = await axios.get(`${base_url}/api/v1/logout`);
         dispatch({
             type: "LOGOUT_SUCCESS",
             payload: data.message,
@@ -74,7 +74,7 @@ export const loadUser = () => async (dispatch) => {
             type: "LOAD_USER_REQUEST",
         });
 
-        const { data } = await axios.get('https://portfolio-backend-dz7p.onrender.com/api/v1/me');
+        const { data } = await axios.get(`${base_url}/api/v1/me`);
         dispatch({
             type: "LOAD_USER_SUCCESS",
             payload: data.user,
@@ -94,7 +94,7 @@ export const updateUser = (name, email, password, skills, about) => async (dispa
             type: "UPDATE_USER_REQUEST",
         });
 
-        const { data } = await axios.put('https://portfolio-backend-dz7p.onrender.com/api/v1/admin/update', {
+        const { data } = await axios.put(`${base_url}/api/v1/admin/update`, {
             name, email, password, skills, about,
         }, {
             headers: {
@@ -120,7 +120,7 @@ export const addTimeline = (title, description, date) => async (dispatch) => {
             type: "ADD_TIMELINE_REQUEST",
         });
 
-        const { data } = await axios.post('https://portfolio-backend-dz7p.onrender.com/api/v1/admin/timeline/add', {
+        const { data } = await axios.post(`${base_url}/api/v1/admin/timeline/add`, {
             title, description, date
         }, {
             headers: {
@@ -146,7 +146,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
             type: "DELETE_TIMELINE_REQUEST",
         });
 
-        const { data } = await axios.delete(`https://portfolio-backend-dz7p.onrender.com/api/v1/admin/timeline/${id}`);
+        const { data } = await axios.delete(`${base_url}/api/v1/admin/timeline/${id}`);
         dispatch({
             type: "DELETE_TIMELINE_SUCCESS",
             payload: data.message,
@@ -166,7 +166,7 @@ export const addYoutube = (title, url, image) => async (dispatch) => {
             type: "ADD_YOUTUBE_REQUEST",
         });
 
-        const { data } = await axios.post('https://portfolio-backend-dz7p.onrender.com/api/v1/admin/youtube/add', {
+        const { data } = await axios.post(`${base_url}/api/v1/admin/youtube/add`, {
             title, url, image
         }, {
             headers: {
@@ -192,7 +192,7 @@ export const deleteYoutube = (id) => async (dispatch) => {
             type: "DELETE_YOUTUBE_REQUEST",
         });
 
-        const { data } = await axios.delete(`https://portfolio-backend-dz7p.onrender.com/api/v1/admin/youtube/${id}`);
+        const { data } = await axios.delete(`${base_url}/api/v1/admin/youtube/${id}`);
         dispatch({
             type: "DELETE_YOUTUBE_SUCCESS",
             payload: data.message,
@@ -212,7 +212,7 @@ export const addProject = (title, url, image, description, techStack) => async (
             type: "ADD_PROJECT_REQUEST",
         });
 
-        const { data } = await axios.post('https://portfolio-backend-dz7p.onrender.com/api/v1/admin/project/add', {
+        const { data } = await axios.post(`${base_url}/api/v1/admin/project/add`, {
             title, url, image, description, techStack
         }, {
             headers: {
@@ -238,7 +238,7 @@ export const deleteProject = (id) => async (dispatch) => {
             type: "DELETE_PROJECT_REQUEST",
         });
 
-        const { data } = await axios.delete(`https://portfolio-backend-dz7p.onrender.com/api/v1/admin/project/${id}`);
+        const { data } = await axios.delete(`${base_url}/api/v1/admin/project/${id}`);
         dispatch({
             type: "DELETE_PROJECT_SUCCESS",
             payload: data.message,
@@ -258,7 +258,7 @@ export const contactUs = (name, email, message) => async (dispatch) => {
             type: "CONTACT_US_REQUEST",
         });
 
-        const { data } = await axios.post('https://portfolio-backend-dz7p.onrender.com/api/v1/contact', {
+        const { data } = await axios.post(`${base_url}/api/v1/contact`, {
             name, email, message
         }, {
             headers: {
